@@ -11,6 +11,7 @@ const io = new SocketServer(server, {
   cors: {
     origin: 'henry-front-tech-g1hmnayfw-jonatan200v.vercel.app',
     transports: ['polling', 'websocket'],
+    credentials: true,
   },
 });
 
