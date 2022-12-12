@@ -9,7 +9,7 @@ const api = 'https://henry-front-tech.vercel.app';
 export const server = http.createServer(app);
 const io = new SocketServer(server, {
   cors: {
-    origin: 'https://henry-front-tech.vercel.app',
+    origin: '*',
     transports: ['websocket'],
     credentials: true,
   },
