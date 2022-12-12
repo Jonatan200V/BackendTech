@@ -4,12 +4,12 @@ import http from 'http';
 import Review from '../models/Review.model.js';
 import Product from '../models/Product.model.js';
 import { MsgPost, MsgReceived } from '../models/Message.model.js';
-const api = 'https://henry-front-tech.vercel.app';
+// const api = 'https://henry-front-tech.vercel.app';
 // const api = 'http://localhost:3000';
 export const server = http.createServer(app);
 const io = new SocketServer(server, {
   cors: {
-    origin: ['https://henry-front-tech.vercel.app', 'http://localhost:3000'],
+    origin: 'http://localhost:3000',
   },
 });
 
