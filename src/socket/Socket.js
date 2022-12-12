@@ -7,7 +7,11 @@ import { MsgPost, MsgReceived } from '../models/Message.model.js';
 const api = 'https://henry-front-tech.vercel.app';
 // const api = 'http://localhost:3000';
 export const server = http.createServer(app);
-const io = new SocketServer(server);
+const io = new SocketServer(server, {
+  cors: {
+    origin: 'https://henry-front-tech.vercel.app',
+  },
+});
 
 export const socketEvents = () => {
   io.on('connection', (socket) => {
