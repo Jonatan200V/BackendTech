@@ -11,7 +11,6 @@ const io = new SocketServer(server, {
   cors: {
     origin: '*',
     transports: ['websocket'],
-    credentials: true,
   },
 });
 
