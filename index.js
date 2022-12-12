@@ -16,9 +16,9 @@ import { server, socketEvents } from './src/socket/Socket.js';
 import axios from 'axios';
 import productsFeaturesSetter from './data/dataFeatures.js';
 
-const port = 3001;
-const api = 'https://henry-tech-app.vercel.app';
-// const api = 'http://localhost:3001';
+const port = process.env.PORT || 3001;
+// const api = 'https://henry-tech-app.vercel.app';
+const api = 'http://localhost:3001';
 async function DB_StartingData() {
   try {
     const users = await User.findAll();
