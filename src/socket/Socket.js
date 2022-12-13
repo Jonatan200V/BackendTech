@@ -10,8 +10,9 @@ export const server = http.createServer(app);
 const io = new SocketServer(server, {
   cors: {
     origin: '*',
-    transports: ['websocket'],
+    transports: ['websocket', 'polling'],
   },
+  allowEIO3: true,
 });
 
 export const socketEvents = () => {
