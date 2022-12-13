@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 export const postSendEmail = async (req, res) => {
   const { user_email, user_name } = req.body;
+  console.log(user_email, user_name);
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,

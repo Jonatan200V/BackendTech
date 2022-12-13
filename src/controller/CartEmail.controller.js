@@ -1,17 +1,18 @@
 import nodemailer from 'nodemailer';
 export const postCartEmail = async (req, res) => {
   const { user_email, user_name } = req.body;
+  console.log(user_email, user_name);
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-      user: 'pateypazhuari@gmail.com',
-      pass: 'nmsxuqnfheiwvygu',
+      user: 'henrytech2023@gmail.com',
+      pass: 'aszkkamjjlbfespv',
     },
   });
   const mailOptions = {
-    from: 'pateypazhuari@gmail.com',
+    from: 'henrytech2023@gmail.com',
     to: `${user_email}`,
     subject: 'Bienvenido a HenryTech!',
     html: `
