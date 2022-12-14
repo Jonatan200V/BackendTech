@@ -17,8 +17,8 @@ import axios from 'axios';
 import productsFeaturesSetter from './data/dataFeatures.js';
 
 const port = process.env.PORT || 3001;
-// const api = 'https://henry-tech-app.vercel.app';
-const api = 'http://localhost:3001';
+const api = 'https://henry-tech-app.vercel.app';
+// const api = 'http://localhost:3001';
 
 async function DB_StartingData() {
   try {
@@ -48,7 +48,7 @@ async function main() {
     await sequelize.sync({ force: false });
     server.listen(port);
     console.log(`listening on port ${port}`);
-    await DB_StartingData();
+    // await DB_StartingData();
     socketEvents();
   } catch (e) {
     console.log('error', e.message);
