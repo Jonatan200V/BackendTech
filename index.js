@@ -19,6 +19,7 @@ import productsFeaturesSetter from './data/dataFeatures.js';
 const port = process.env.PORT || 3001;
 // const api = 'https://henry-tech-app.vercel.app';
 const api = 'http://localhost:3001';
+
 async function DB_StartingData() {
   try {
     const users = await User.findAll();
@@ -42,7 +43,6 @@ async function DB_StartingData() {
     console.log(error.message);
   }
 }
-
 async function main() {
   try {
     await sequelize.sync({ force: true });
@@ -51,7 +51,7 @@ async function main() {
     await DB_StartingData();
     socketEvents();
   } catch (e) {
-    console.log('error', e);
+    console.log('error', e.message);
   }
 }
 
