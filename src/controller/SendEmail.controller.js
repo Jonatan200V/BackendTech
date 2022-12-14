@@ -1,4 +1,7 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+dotenv.config();
+const { NODEMAILER_USER, NODEMAILER_PASS } = process.env;
 export const postSendEmail = async (req, res) => {
   const { user_email, user_name } = req.body;
   console.log(user_email, user_name);
@@ -7,12 +10,12 @@ export const postSendEmail = async (req, res) => {
     port: 465,
     secure: true,
     auth: {
-      user: 'pateypazhuari@gmail.com',
-      pass: 'nmsxuqnfheiwvygu',
+      user: NODEMAILER_USER,
+      pass: NODEMAILER_PASS,
     },
   });
   const mailOptions = {
-    from: 'pateypazhuari@gmail.com',
+    from: NODEMAILER_USER,
     to: `${user_email}`,
     subject: 'Bienvenido a HenryTech!',
     html: `
