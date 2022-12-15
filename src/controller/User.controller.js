@@ -81,6 +81,7 @@ export const getUser = async (req, res) => {
             'product_rating',
             'product_img',
             'product_stock_id',
+            'product_ofer',
           ],
         },
       ],
@@ -254,6 +255,10 @@ export const loginUserAuth0 = async (req, res) => {
           include: Order,
         },
         {
+          model: MsgPost,
+          include: MsgReceived,
+        },
+        {
           model: Product,
           as: 'user_favorites',
           include: Stock,
@@ -265,6 +270,7 @@ export const loginUserAuth0 = async (req, res) => {
             'product_rating',
             'product_img',
             'product_stock_id',
+            'product_ofer',
           ],
         },
       ],
@@ -277,7 +283,7 @@ export const loginUserAuth0 = async (req, res) => {
       user_email,
       user_name,
       user_isAdmin: false,
-      user_password: 'Auth0AutenticatePassword',
+      user_password: 'Password',
     });
     await MsgPost.create({
       msgpost_post: '',
@@ -296,7 +302,24 @@ export const loginUserAuth0 = async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 };
-
+export const createPasswordAuth0 = async (req, res) => {
+  const { user_password, user_id } = req.body;
+  console.log(user_password, user_id);
+  const newPasswod = bcrypt.hash(user_password, 10);
+  try {
+    await User.update(
+      { user_password: newPasswod },
+      {
+        where: {
+          user_id,
+        },
+      }
+    );
+    res.json({ message: 'Contraseña establecida correctamente' });
+  } catch (error) {
+    res.status(401).json({ msg: error.message });
+  }
+};
 export const loginUser = async (req, res) => {
   const { user_email, user_password } = req.body;
   try {
@@ -322,6 +345,7 @@ export const loginUser = async (req, res) => {
             'product_rating',
             'product_img',
             'product_stock_id',
+            'product_ofer',
           ],
         },
       ],

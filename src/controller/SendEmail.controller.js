@@ -4,10 +4,9 @@ dotenv.config();
 const { NODEMAILER_USER, NODEMAILER_PASS } = process.env;
 export const postSendEmail = async (req, res) => {
   const { user_email, user_name } = req.body;
-  console.log(user_email, user_name);
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 465,
+    port: 2525,
     secure: true,
     auth: {
       user: NODEMAILER_USER,
@@ -50,7 +49,7 @@ export const postSendEmail = async (req, res) => {
                                                             El Staff de HenryTech
                                                         </p>
                                                         <p style="margin:0 0 12px 0;font-size:14px;line-height:24px;font-family:'Montserrat',sans-serif">
-                                                            Haz click <a href="https://henry-tech-app.vercel.app/">aquí</a> para volver a nuestra pagina.
+                                                            Haz click <a href="https://henry-tech-app.vercel.app/">aquÃ­</a> para volver a nuestra pagina.
                                                         </p>
                                                     </td>
                                                 </tr>
@@ -68,7 +67,7 @@ export const postSendEmail = async (req, res) => {
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      res.status(500).send(error.message);
+      res.status(401).send(error.message);
     } else {
       res.status(200).json(req.body);
     }
